@@ -1,4 +1,7 @@
-# FitBuddy
+# LiftinBud
+1/2/2020 - I like the idea of being able to edit a workout/exercise while viewing your current workout. I would want flexability. Maybe a typeahead with autofill for the other fields, and if the user wants can just create a new exercise in the workout. workout would be saved that way.
+
+instead of create dropdown I think I like a create route with pills to select exercise or workout. Not crazy about dropdown, especially on mobile.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 

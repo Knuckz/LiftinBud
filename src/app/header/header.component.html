@@ -1,0 +1,24 @@
+<div class="navbar navbar-dark navbar-expand-lg bg-primary " role="navigation">
+    <a class="navbar-brand">LiftinBud</a>
+    <button class="navbar-toggler" type="button" app-toggle-directive aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse toggle">
+
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a routerLink="/workouts" class="nav-link">Workouts</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/exercises" class="nav-link">Exercises</a>
+            </li>
+            <li class="dropdown nav-item" app-toggle-directive>
+                <a style="cursor: pointer;" class="dropdown-toggle nav-link" role="button">Create</a>
+                <div class="dropdown-menu toggle">
+                    <a routerLink="/create-workouts" class="dropdown-item" style="cursor: pointer;">New Workouts</a>
+                    <a routerLink="/create-exercises" class="dropdown-item" style="cursor: pointer;">New Exercises</a>
+                </div>  
+            </li>
+        </ul>
+    </div>
+</div>
