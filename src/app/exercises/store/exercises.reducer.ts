@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
 import { Exercise } from '../exercises.model';
-import { fetchExercises, fetchExercisesSuccess, fetchExercisesFailure } from './exercises.actions';
+import { fetchExercises, fetchExercisesSuccess, fetchExercisesFailure, addExercise, addExerciseSuccess, addExerciseFailure } from './exercises.actions';
 import { exercisesEffects } from './exercises.effects';
 
 export interface State {
@@ -24,7 +24,7 @@ const _exercisesReducer = createReducer(
         ...state,
         loading: true,
     })),
-    on(fetchExercisesSuccess, (state, { exercises}) => ({
+    on(fetchExercisesSuccess, (state, { exercises }) => ({
         ...state,
         loaded: true,
         loading: false,
@@ -36,6 +36,14 @@ const _exercisesReducer = createReducer(
         loading: false,
         error: error,
     })),
+    on(addExerciseSuccess, (state, { exercise }) => ({
+        ...state,
+        exercises: [...state.exercises, exercise]
+    })),
+    on(addExerciseFailure, (state, { error }) => ({
+        ...state,
+        error: error
+    }))
 );
 
 export function exercisesReducer(state, action) {

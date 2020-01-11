@@ -1,0 +1,12 @@
+<div *ngIf="!!exercise" class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{exercise.name}}</h5>
+        <div class="row exercise-row">
+            <div class="col-12 col-sm-6">{{exercise.description}}</div>
+            <div class="col-12 col-sm-6">
+                <span *ngFor="let desc of exercise.descriptor"><span class="badge badge-pill badge-primary">{{desc.name}}</span></span>
+            </div>
+        </div>
+    </div>
+</div>
+

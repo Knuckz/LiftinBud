@@ -1,6 +1,8 @@
+import { HeaderComponent } from './header/header.component';
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Store } from '@ngrx/store';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,8 +11,12 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent
       ],
+      providers: [
+        {provide: Store}
+      ]
     }).compileComponents();
   }));
 
@@ -24,12 +30,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('LiftinBud');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('LiftinBud app is running!');
   });
 });

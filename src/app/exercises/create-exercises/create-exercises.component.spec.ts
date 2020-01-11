@@ -1,6 +1,9 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import * as fromExercises from '../store/exercises.reducer';
 
 import { CreateExercisesComponent } from './create-exercises.component';
+import { StoreModule } from '@ngrx/store';
 
 describe('CreateExercisesComponent', () => {
   let component: CreateExercisesComponent;
@@ -8,7 +11,11 @@ describe('CreateExercisesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateExercisesComponent ]
+      declarations: [ CreateExercisesComponent ],
+      imports: [
+        ReactiveFormsModule,
+        StoreModule.forRoot(fromExercises.exercisesReducer),
+      ]
     })
     .compileComponents();
   }));

@@ -1,6 +1,7 @@
 export class Exercise {
-    public exerciseName: string;
-    public exerciseId: number;
+    public name: string;
+    public description: string;
+    public id: number;
     public instructions: string;
     public creatorId: number;
     public creatorName: string;
@@ -8,6 +9,6 @@ export class Exercise {
 }
 
 export class Descriptor {
-    public descriptorName: string;
-    public descriptorId: number;
+    public name: string;
+    public id: number;
 }

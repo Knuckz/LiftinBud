@@ -2,7 +2,7 @@ import { Exercise } from './../exercises.model';
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError } from 'rxjs/operators'
-import { of } from 'rxjs';
+import { of, EMPTY } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
 import * as exerciseActions from './exercises.actions';
 
@@ -28,4 +28,17 @@ export class exercisesEffects {
         )
     )
     )
+
+    addExercise$ = createEffect(() => this.actions$.pipe(
+        ofType(exerciseActions.addExercise),
+        switchMap(({ exercise }) => this.http.post<Exercise>('api/exercises', exercise)
+            .pipe(
+                map(exercise => 
+                    exerciseActions.addExerciseSuccess({ exercise })),
+                catchError((error) => {
+                    return of(exerciseActions.addExerciseFailure({ error }))
+                })
+            )
+        )
+    ))
 }
