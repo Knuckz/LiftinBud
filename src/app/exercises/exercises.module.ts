@@ -1,3 +1,4 @@
+import { ModalModule } from './../shared/modal/modal.module';
 import { CreateExercisesComponent } from './create-exercises/create-exercises.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,6 +16,11 @@ export const routes: Routes = [
         resolve: [exercisesResolverService],
         children: [
             {
+                path: '',
+                redirectTo: 'view',
+                pathMatch: 'full'
+            },
+            {
                 path: 'view',
                 component: ViewExercisesComponent
             },
@@ -31,6 +37,7 @@ export const routes: Routes = [
     imports: [
         CommonModule,
         ReactiveFormsModule,
+        ModalModule,
         RouterModule.forChild(routes)
     ]
 })

@@ -1,0 +1,9 @@
+.exercise {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.no-gutters {
+    padding-left: 0px;
+    padding-right: 0px;
+}

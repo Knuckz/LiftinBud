@@ -1,3 +1,4 @@
+import { ModalModule } from './shared/modal/modal.module';
 import { environment } from './../environments/environment';
 import { exercisesEffects } from './exercises/store/exercises.effects';
 import { NgModule } from '@angular/core';
@@ -31,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ModalModule,
     //creates a local database
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDbService, {dataEncapsulation: false }

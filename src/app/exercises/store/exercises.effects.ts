@@ -41,4 +41,28 @@ export class exercisesEffects {
             )
         )
     ))
+
+    editExercise$ = createEffect(() => this.actions$.pipe(
+        ofType(exerciseActions.editExercise),
+        switchMap(({ exercise, index }) => this.http.put<Exercise>(`api/exercises/${exercise.id}`, exercise)
+            .pipe(
+                map(() => exerciseActions.editExerciseSuccess({ exercise, index })),
+                catchError((error) => {
+                    return of(exerciseActions.editExerciseFailure({ error }))
+                })
+            )
+        )
+    ))
+
+    deleteExercise$ = createEffect(() => this.actions$.pipe(
+        ofType(exerciseActions.deleteExercise),
+        switchMap(({ exercise, index }) => this.http.delete<Exercise>(`api/exercises/${exercise.id}`)
+            .pipe(
+                map(() => exerciseActions.deleteExerciseSuccess({ exercise, index })),
+                catchError((error) => {
+                    return of(exerciseActions.deleteExerciseFailure({ error }))
+                })
+            )
+        )
+    ))
 }

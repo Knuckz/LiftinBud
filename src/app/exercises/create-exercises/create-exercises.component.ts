@@ -43,8 +43,7 @@ export class CreateExercisesComponent implements OnInit {
       instructions: [''],
       descriptor: this.fb.array([
         this.fb.group({
-          name: [''],
-          id: ['']
+          name: ['']
         })
       ])
     })        
@@ -53,8 +52,7 @@ export class CreateExercisesComponent implements OnInit {
 
   initDescriptorForm() {
     return this.fb.group({
-      name: [''],
-      id: ['']
+      name: ['']
     })
   }
 }

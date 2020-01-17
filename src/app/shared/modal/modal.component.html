@@ -1,0 +1,36 @@
+<div class="modal fade" [ngClass]="{'show displayModal' : isOpen}" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- The title can just be passed in as a string -->
+                <ng-content *ngTemplateOutlet="headerTemplate ? headerTemplate : defaultHeader"></ng-content>
+                <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ng-content *ngTemplateOutlet="bodyTemplate ? bodyTemplate : defaultBody"></ng-content>
+                <!-- We will pass in a template here to display in the modal -->
+            </div>
+            <!-- Get rid of standard save a close buttons? Add them in template if we desire them The X button can be standard -->
+            <div  *ngIf="!hideModal"class="modal-footer">
+                <ng-content *ngTemplateOutlet="footerTemplate ? footerTemplate : defaultFooter"></ng-content>
+                <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div (click)="openModal()" class="modalButton">
+    <ng-content>
+        <!-- This is where the user can click and show the modal -->
+    </ng-content>
+</div>  
+
+<ng-template #defaultHeader>
+    <h5 class="modal-title">Modal</h5>
+</ng-template>
+
+<ng-template #defaultBody>
+    default body
+</ng-template>

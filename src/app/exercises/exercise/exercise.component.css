@@ -1,0 +1,19 @@
+.exercise-card:hover {
+    background-color: lightsteelblue;
+} 
+
+.pull-left {
+    float: left !important;
+    margin-right: 0 auto;
+}
+
+.card {
+    border-width: 2px; 
+}
+
+.exercise-heading {
+    padding: 10px;
+}
+.exercise-body {
+    padding: 10px;
+}

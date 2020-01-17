@@ -13,9 +13,9 @@ export const DESCRIPTOR: Descriptor [] = [
 
 export const EXERCISES: Exercise[] = [
     {
+        id: 1,
         name: 'Deadlift', 
         description: 'A short description',
-        id: 1,
         instructions: "pull it off the ground",
         creatorId: 1,
         creatorName: 'Austin',

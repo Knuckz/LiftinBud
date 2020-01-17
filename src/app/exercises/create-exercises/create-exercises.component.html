@@ -15,7 +15,7 @@
         <label for="descriptor">Descriptors</label>
         <div class="row" *ngFor="let descriptor of descriptors.controls; let i=index" [formGroupName]="i">
             <div class="col">
-                <input type="text" class="form-control" id="descriptor" formControlName="name">
+                <input type="text" class="form-control" formControlName="name">
             </div>
             <div class="col-auto button-gutters">
                 <button type="button" (click)="addDescriptor()" class="btn btn-primary btn-sm">+</button>

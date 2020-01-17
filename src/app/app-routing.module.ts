@@ -4,7 +4,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/exercises', pathMatch: 'full' 
+    path: '', redirectTo: '/exercises/view', pathMatch: 'full' 
   },
   {
     path: 'workouts',
