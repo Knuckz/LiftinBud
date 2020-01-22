@@ -4,7 +4,7 @@
 
 .pull-left {
     float: left !important;
-    margin-right: 0 auto;
+    margin-right: auto;
 }
 
 .card {
@@ -16,4 +16,18 @@
 }
 .exercise-body {
     padding: 10px;
+}
+.exercise-row {
+    padding: 5px;
+    padding-bottom: 10px;
+}
+.exercise-instructions {
+    border:1px solid rgba(0,0,0,.125);
+    padding: 5px;
+    background-color: rgba(0,0,0,.03);
+
+}
+.exercise-buttons {
+    padding: 5px;
+    padding-top: 10px;
 }

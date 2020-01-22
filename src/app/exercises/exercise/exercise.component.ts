@@ -19,6 +19,7 @@ export class ExerciseComponent implements OnInit {
   initialExercise: Exercise = new Exercise();
   editMode: boolean = false;
   isClosed: boolean = false;
+  isShowInstructions: boolean = false;
   editExerciseForm: FormGroup;
   name: string;
   description: string;
@@ -31,23 +32,29 @@ export class ExerciseComponent implements OnInit {
   }
 
   onToggle(isOpen: boolean) {
-    if (!isOpen && !!this.editMode) {
+    if (!!isOpen) {
+      this.startEditing();
+    }
+    if (!isOpen) {
       this.stopEditing();
     }
   }
 
+  onExerciseClick() {
+    this.isShowInstructions = !this.isShowInstructions;
+  }
+
   ngOnInit() {
+    this.startEditing();
     this.initialExercise = this.exercise;
   }
 
   startEditing() {
     this.initForm();
-    this.editMode = true;
   }
 
   stopEditing() {
     this.editExerciseForm.reset();
-    this.editMode = false;
   }
 
   deleteExercise() {
@@ -83,8 +90,6 @@ export class ExerciseComponent implements OnInit {
     for (let i = 0; i < this.exercise.descriptor.length; i ++) {
       this.addDescriptor(this.exercise.descriptor[i].name);
     }
-
-    this.editMode = true;
   }
 
   initDescriptorForm(name: string) {

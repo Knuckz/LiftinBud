@@ -1,3 +1,4 @@
+import { Workout } from './../workouts/workout.model';
 import { Exercise, Descriptor } from './../exercises/exercises.model';
 
 export const DESCRIPTOR: Descriptor [] = [
@@ -83,6 +84,54 @@ export const EXERCISES: Exercise[] = [
         creatorId: 1,
         creatorName: 'Austin',
         descriptor: [DESCRIPTOR[2], DESCRIPTOR[6]]
+    },
+]
+
+export const WORKOUTS: Workout[] = [
+    {
+        id: 1,
+        name: 'Leg Day', 
+        description: 'Every day is leg day',
+        creatorId: 1,
+        creatorName: 'Austin',
+        descriptors: [DESCRIPTOR[0], DESCRIPTOR[1], DESCRIPTOR[6]],
+        exercises: [EXERCISES[0], EXERCISES[1], EXERCISES[2], EXERCISES[3]]
+    },
+    {
+        id: 2,
+        name: 'Upper body day', 
+        description: 'push and pull',
+        creatorId: 1,
+        creatorName: 'Austin',
+        descriptors: [DESCRIPTOR[0], DESCRIPTOR[1], DESCRIPTOR[6]],
+        exercises: [EXERCISES[4], EXERCISES[5], EXERCISES[6], EXERCISES[7]]
+    },
+    {
+        id: 3,
+        name: 'Leg Day', 
+        description: 'Every day is leg day',
+        creatorId: 1,
+        creatorName: 'Austin',
+        descriptors: [DESCRIPTOR[0], DESCRIPTOR[1], DESCRIPTOR[6]],
+        exercises: [EXERCISES[0], EXERCISES[1], EXERCISES[2], EXERCISES[3]]
+    },
+    {
+        id: 4,
+        name: 'Upper body day', 
+        description: 'push and pull',
+        creatorId: 1,
+        creatorName: 'Austin',
+        descriptors: [DESCRIPTOR[0], DESCRIPTOR[1], DESCRIPTOR[6]],
+        exercises: [EXERCISES[4], EXERCISES[5], EXERCISES[6], EXERCISES[7]]
+    },
+    {
+        id: 5,
+        name: 'Leg Day', 
+        description: 'Every day is leg day',
+        creatorId: 1,
+        creatorName: 'Austin',
+        descriptors: [DESCRIPTOR[0], DESCRIPTOR[1], DESCRIPTOR[6]],
+        exercises: [EXERCISES[0], EXERCISES[1], EXERCISES[2], EXERCISES[3]]
     },
 ]
 

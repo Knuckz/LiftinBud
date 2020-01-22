@@ -1,5 +1,5 @@
-<app-modal (isOpenEmitter)="onToggle($event)" [headerTemplate]="editMode ? editModeHeader : exerciseHeader" [bodyTemplate]="editMode ? editModeBody : exerciseBody" [footerTemplate]="exerciseFooter" [hideFooter]="true">
-    <div *ngIf="!!exercise" class="card exercise-card">
+<div *ngIf="!!exercise" class="card exercise-card">
+    <div class="noFooter" (click)="onExerciseClick()">
         <h5 class="card-header">{{exercise.name}}
             <span *ngFor="let desc of exercise.descriptor">
                 <span class="badge badge-pill badge-primary">{{desc.name}}</span>
@@ -8,12 +8,35 @@
         <div class="card-body exercise-body">
             <div class="row exercise-row">
                 <div class="col-12 col-sm-6">{{exercise.description}}</div>
-                <div class="col-12 col-sm-6">
+            </div>
+            <div class="row" *ngIf="isShowInstructions">
+                <div class="col-12">
+                    <div class="exercise-instructions">
+                        <h6>Instructions</h6>
+                        {{exercise.instructions}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</app-modal>
+    <div *ngIf="isShowInstructions" class="card-footer">
+        <div class="exercise-buttons">
+            <app-modal 
+                (isOpenEmitter)="onToggle($event)"
+                [headerTemplate]="editModeHeader"
+                [bodyTemplate]="editModeBody" 
+                [footerTemplate]="exerciseFooter"
+                [hideFooter]="true">
+                <button 
+                    type="button" 
+                    class="btn btn-primary">
+                    Edit
+                </button>
+            </app-modal>
+        </div>
+    </div>
+</div>
+
 
 <ng-template #exerciseHeader>
     <h5>{{exercise?.name}}</h5>
@@ -38,18 +61,16 @@
             <div class="col-12">
                 {{exercise.instructions}}
             </div>
-        </div>  
+        </div>
     </div>
 </ng-template>
 
 <ng-template #exerciseFooter>
     <div class="pull-left">
-        <button *ngIf="!!editMode" class="btn btn-danger" (click)="deleteExercise()">DELETE</button>
+        <button class="btn btn-danger" (click)="deleteExercise()">DELETE</button>
     </div>
-    <button *ngIf="!!editMode" form="editExerciseForm" class="btn btn-primary" type="submit">Save</button>
-    <button *ngIf="!!editMode" class="btn btn-primary" (click)="resetForm()">Reset</button>
-    <button *ngIf="!editMode" type="button" class="btn btn-primary" (click)="startEditing()">Edit</button>
-    <button *ngIf="!!editMode"class="btn btn-primary" type="button" (click)="stopEditing()">View</button>
+    <button form="editExerciseForm" class="btn btn-primary" type="submit">Save</button>
+    <button class="btn btn-primary" (click)="resetForm()">Reset</button>
 </ng-template>
 
 <ng-template #editModeHeader>
@@ -80,14 +101,15 @@
                     </div>
                     <div class="col-auto button-gutters">
                         <button type="button" class="btn btn-danger btn-sm" (click)="onDeleteDescriptor(i)">X</button>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-12">
                 <label for="instructions">Instructions</label>
-                <textarea type="text" class="form-control" id="instructions" formControlName="instructions" rows="5"></textarea>   
+                <textarea type="text" class="form-control" id="instructions" formControlName="instructions"
+                    rows="5"></textarea>
             </div>
         </div>
     </form>

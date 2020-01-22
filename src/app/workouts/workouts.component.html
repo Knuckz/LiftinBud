@@ -1,11 +1,7 @@
-<app-modal [headerTemplate]="headerTemplate" [bodyTemplate]="bodyTemplate">
-    <div>TESTING</div>
-</app-modal>
-
-<ng-template #headerTemplate>
-<h1>Woah</h1>
-</ng-template>
-
-<ng-template #bodyTemplate>
-    <h1>Woah</h1>
-</ng-template>
+<div>
+    <div class="nav nav-pills nav-justified workouts-heading">
+        <a routerLink="./view" routerLinkActive="active" class="nav-link">View</a>
+        <a routerLink="./create" routerLinkActive="active" class="nav-link">Create</a>
+    </div>
+    <router-outlet></router-outlet>
+</div>

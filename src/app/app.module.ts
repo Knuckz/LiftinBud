@@ -1,3 +1,4 @@
+import { workoutsEffects } from './workouts/store/workouts.effects';
 import { ModalModule } from './shared/modal/modal.module';
 import { environment } from './../environments/environment';
 import { exercisesEffects } from './exercises/store/exercises.effects';
@@ -42,7 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     WorkoutsModule,
     ExercisesModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([exercisesEffects]),
+    EffectsModule.forRoot([exercisesEffects, workoutsEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

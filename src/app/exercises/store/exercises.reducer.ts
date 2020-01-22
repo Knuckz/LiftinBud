@@ -4,14 +4,14 @@ import { Exercise } from '../exercises.model';
 import { fetchExercises, fetchExercisesSuccess, fetchExercisesFailure, addExercise, addExerciseSuccess, addExerciseFailure, editExerciseSuccess, editExerciseFailure, editExercise, deleteExerciseSuccess, deleteExerciseFailure } from './exercises.actions';
 import { exercisesEffects } from './exercises.effects';
 
-export interface State {
+export interface exercisesState {
     loaded: boolean;
     loading: boolean;
     error: any;
     exercises: Exercise[];
 }
 
-const initialState: State = {
+const initialState: exercisesState = {
     loaded: false,
     loading: false,
     error: '',

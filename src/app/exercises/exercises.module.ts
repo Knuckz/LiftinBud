@@ -1,3 +1,4 @@
+import { directivesModule } from './../directives/directives.module';
 import { ModalModule } from './../shared/modal/modal.module';
 import { CreateExercisesComponent } from './create-exercises/create-exercises.component';
 import { CommonModule } from '@angular/common';
@@ -38,7 +39,11 @@ export const routes: Routes = [
         CommonModule,
         ReactiveFormsModule,
         ModalModule,
+        directivesModule,
         RouterModule.forChild(routes)
+    ],
+    exports: [
+        ExerciseComponent
     ]
 })
 export class ExercisesModule { }

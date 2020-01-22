@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-6">
+                    {{workout.name}}
+                </div>
+                <div class="col-6">
+                    <span *ngFor="let descriptor of workout.descriptors" class="badge badge-primary">
+                        {{descriptor.name}}
+                    </span>
+                </div>
+            </div>  
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 divider">
+                    {{workout.description}}
+                </div>
+            </div>
+            <div class="row">
+                <div *ngIf="!!workout.exercises" class="col-12">
+                    <table class="table col-12">
+                        <thead>
+                            <th>Name</th>
+                            <th>Sets</th>
+                            <th>Reps</th>
+                            <th>Amount</th>
+                        </thead>
+                        <tbody>
+                            <tr class="col-12 no-gutters" 
+                            *ngFor="let exercise of workout.exercises; let i = index">
+                                <td>{{exercise.name}}</td>
+                                <td> -- </td>
+                                <td> -- </td>
+                                <td> -- </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-danger" (click)="onDelete(workout)">Delete Exercise</button>
+
+            <button class="btn btn-primary">Edit</button>
+        </div>
+    </div>
+</div>

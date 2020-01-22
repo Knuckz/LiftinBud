@@ -9,7 +9,7 @@ import * as fromExercises from './exercises.reducer'
 
 export const exerciseFeatureKey = 'exercisePage';
 
-export const getExercisesPageState = createFeatureSelector<fromExercises.State>(exerciseFeatureKey);
+export const getExercisesPageState = createFeatureSelector<fromExercises.exercisesState>(exerciseFeatureKey);
 //export const getExercisesPageState = (state: fromApp.AppState) => state.exercisePage;
 
 export const getExercises = createSelector(getExercisesPageState, exercisesPageState => {

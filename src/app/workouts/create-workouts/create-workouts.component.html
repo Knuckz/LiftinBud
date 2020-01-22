@@ -1,0 +1,22 @@
+<form [formGroup]="createWorkoutForm" (ngSubmit)="onSubmit()" class="form-group" id="createWorkoutForm">
+    <div class="form-group">
+        <label for="name">Workout Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+    </div>
+    <div class="form-group">
+        <label for="description">Workout Description</label>
+        <input type="text" class="form-control" id="description" formControlName="description">
+    </div>
+    <div class="form-group" formArrayName="exercises">
+        <label for="exerciseId">Exercises</label>
+        <button type="button" class="btn small btn-primary exercise-buttons" (click)="onAddExercise()">+</button>
+        <div *ngFor="let exercise of exercises.controls; let i = index">
+            <select name="exerciseId" id="exerciseId" [formControlName]="i">
+                <option value="" selected disabled hidden>--Select Exercise--</option>
+                <option *ngFor="let selectedExercise of exerciseArray" [ngValue]="selectedExercise">{{selectedExercise.name}}</option>
+            </select>
+            <button type="button" class="btn btn-danger exercise-buttons" (click)="onDeleteExercise(i)">x</button>
+        </div>
+    </div>
+    <button form="createWorkoutForm" type="submit" class="btn btn-success">Submit</button>
+</form>

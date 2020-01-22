@@ -1,6 +1,6 @@
 import { Observable, of } from 'rxjs';
 import { Exercise } from '../exercises/exercises.model';
-import { EXERCISES } from './exercises';
+import { EXERCISES, WORKOUTS } from './exercises';
 import { Injectable } from '@angular/core';
 
 //third party library that creates a local database
@@ -9,6 +9,6 @@ import { Injectable } from '@angular/core';
 })
 export class InMemoryDbService {
     createDb() {
-        return { 'exercises': EXERCISES };
+        return { 'exercises': EXERCISES, 'workouts': WORKOUTS };
     }
 }
