@@ -1,50 +1,93 @@
-<div class="container-fluid">
+<div>
     <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-6">
-                    {{workout.name}}
+        <form [formGroup]="editForm" (ngSubmit)="saveEdit()" id="editForm">
+            <div class="card-header details-header">
+                <div class="row col-12">
+                    <h5>Workout Details</h5>
                 </div>
-                <div class="col-6">
+                <div class="row">
+                    <div *ngIf="!editMode" class="col-6">
+                        <h6>
+                            {{workout.name}}
+                        </h6>
+                    </div>
+                    <div *ngIf="!!editMode" class="input-group col">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Edit</span>
+                        </div>
+                        <input type="text" class="form-control" formControlName="name">
+                    </div>
+                </div>  
+            </div>
+            <div class="card-body details-body">
+                <div class="row col-12 details-descriptors">
                     <span *ngFor="let descriptor of workout.descriptors" class="badge badge-primary">
                         {{descriptor.name}}
                     </span>
                 </div>
-            </div>  
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-12 divider">
-                    {{workout.description}}
+                <!-- <div class="row details-description-row">
+                    <div class="details-description">
+                        <div *ngIf="!editMode" class="col-12">
+                            {{workout.description}}
+                        </div>
+                        <div *ngIf="!!editMode" class="input-group col">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text">Edit</span>
+                            </div>                        
+                            <input type="text" class="form-control" formControlName="description">
+                        </div>
+                    </div>  
+                </div> -->
+                <div class="row">
+                    <div *ngIf="!!workout.exercises" class="col-12 table-responsive-sm">
+                        <table class="table col-12">
+                            <thead>
+                                <th *ngIf="!!editMode"></th>
+                                <th>Name</th>
+                                <th>Sets</th>
+                                <th>Reps</th>
+                            </thead>
+                            <tbody>
+                                <tr class="col-12 no-gutters" 
+                                *ngFor="let exercise of workout.exercises; let i = index" [ngClass]="{'table-danger' : checkMap(i), 'table-default' : !checkMap(i)}">
+                                    <td *ngIf="!!editMode">
+                                        <button *ngIf="!checkMap(i)" type="button" class="btn btn-danger btn-sm" (click)="onDeleteExercise(exercise, i)">x</button>
+                                        <button *ngIf="checkMap(i)" type="button" class="btn btn-primary btn-sm" (click)="onAddTempExercise(exercise, i)">+</button>
+                                    </td>
+                                    <td>{{exercise.name}}</td>
+                                    <td> -- </td>
+                                    <td> -- </td>
+                                </tr>
+                                <tr [hidden]="!editMode" class="form-group" *ngFor="let exercise of exercises.controls; let i = index;" formArrayName="exercises">
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm" (click)="removeExercise(i)">x</button>
+                                    </td>
+                                    <td colspan="3">
+                                        <select class="form-control exercise-select" [formControlName]="i">
+                                            <option [value]="null" selected disabled hidden>--Select Exercise--</option>
+                                            <option *ngFor="let selectedExercise of exerciseArray" [ngValue]="selectedExercise">{{selectedExercise.name}}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr [hidden]="!editMode">
+                                    <td colspan="4">
+                                        <button type="button" class="btn btn-sm btn-primary" (click)="onAddExercise(null)">+</button>
+                                    </td>                                
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer details-footer">
+                <button type="button" *ngIf="!!editMode" class="btn btn-danger" (click)="onDelete(workout)">Delete Workout</button>
+                <button type="button" *ngIf="!editMode" class="btn btn-primary" (click)="onEdit()">Edit</button>
+                <div *ngIf="!!editMode" class="edit-button-group">
+                    <button type="button" class="btn btn-danger cancel-button" (click)="onCancel()">Cancel</button>
+                    <button type="button" form="editForm" class="btn btn-primary save-button" (click)="onSubmit()">Save</button>
                 </div>
             </div>
-            <div class="row">
-                <div *ngIf="!!workout.exercises" class="col-12">
-                    <table class="table col-12">
-                        <thead>
-                            <th>Name</th>
-                            <th>Sets</th>
-                            <th>Reps</th>
-                            <th>Amount</th>
-                        </thead>
-                        <tbody>
-                            <tr class="col-12 no-gutters" 
-                            *ngFor="let exercise of workout.exercises; let i = index">
-                                <td>{{exercise.name}}</td>
-                                <td> -- </td>
-                                <td> -- </td>
-                                <td> -- </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
-        <div class="card-footer">
-            <button class="btn btn-danger" (click)="onDelete(workout)">Delete Exercise</button>
-
-            <button class="btn btn-primary">Edit</button>
-        </div>
+        </form>
     </div>
 </div>

@@ -1,5 +1,6 @@
 import { Workout } from './../workout.model';
 import { createAction, props } from '@ngrx/store';
+import { Exercise } from 'src/app/exercises/exercises.model';
 
 export const fetchWorkouts = createAction('[Workouts Component] Fetch workouts');
 
@@ -41,4 +42,43 @@ export const deleteWorkoutSuccess = createAction(
 export const deleteWorkoutFailure = createAction(
     '[Workouts Component] Delete workout failure',
     props<{ error: any }>()
+);
+
+export const setTempExercises = createAction(
+    '[Workouts Component] Set temp exercises',
+    props<{ newTempExercises: Exercise[] }>()
+);
+
+export const clearTempExercises = createAction(
+    '[Workouts Component] Clear temp exercises'
+);
+
+export const deleteTempExercise = createAction(
+    '[Workouts Component] Delete temp exercises',
+    props<{ deleteExercise: Exercise }>()
+);
+
+export const addTempExercise = createAction(
+    '[Workouts component] Add temp exercises',
+    props<{ tempExercise: Exercise}>()
+);
+
+export const editWorkout = createAction(
+    '[Workouts Component] Edit workout',
+    props<{ workout }>()
+);
+
+export const editWorkoutSuccess = createAction(
+    '[Workouts Component] Edit workout success',
+    props<{ workout }>()
+);
+
+export const editWorkoutFailure = createAction(
+    '[Workouts component] Edit workout failure',
+    props<{ error }>()
+);
+
+export const updateSelectedWorkout = createAction(
+    '[Workouts component] Update selected workout',
+    props<{ workoutId }>()
 );

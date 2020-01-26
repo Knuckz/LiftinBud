@@ -13,12 +13,10 @@
     </div>
     <div class="form-group" formArrayName="descriptor">
         <label for="descriptor">Descriptors</label>
+            <button type="button" (click)="addDescriptor()" class="btn btn-primary btn-sm button-gutters">+</button>
         <div class="row" *ngFor="let descriptor of descriptors.controls; let i=index" [formGroupName]="i">
             <div class="col">
                 <input type="text" class="form-control" formControlName="name">
-            </div>
-            <div class="col-auto button-gutters">
-                <button type="button" (click)="addDescriptor()" class="btn btn-primary btn-sm">+</button>
             </div>
             <div class="col-auto button-gutters">
                 <button type="button" class="btn btn-danger btn-sm" (click)="onDeleteDescriptor(i)">X</button>

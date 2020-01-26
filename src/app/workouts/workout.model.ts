@@ -11,6 +11,6 @@ export class Workout {
     public creatorName: string;
     constructor() {
         this.exercises = new Array<Exercise>();
-        this.descriptors = new Array<Descriptor>()
+        this.descriptors = new Array<Descriptor>();
     }
 }

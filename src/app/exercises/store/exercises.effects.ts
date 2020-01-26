@@ -58,7 +58,7 @@ export class exercisesEffects {
         ofType(exerciseActions.deleteExercise),
         switchMap(({ exercise, index }) => this.http.delete<Exercise>(`api/exercises/${exercise.id}`)
             .pipe(
-                map((workout) => exerciseActions.deleteExerciseSuccess({ exercise, index })),
+                map(() => exerciseActions.deleteExerciseSuccess({ exercise, index })),
                 catchError((error) => {
                     return of(exerciseActions.deleteExerciseFailure({ error }))
                 })

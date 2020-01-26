@@ -9,13 +9,17 @@
     </div>
     <div class="form-group" formArrayName="exercises">
         <label for="exerciseId">Exercises</label>
-        <button type="button" class="btn small btn-primary exercise-buttons" (click)="onAddExercise()">+</button>
-        <div *ngFor="let exercise of exercises.controls; let i = index">
-            <select name="exerciseId" id="exerciseId" [formControlName]="i">
-                <option value="" selected disabled hidden>--Select Exercise--</option>
-                <option *ngFor="let selectedExercise of exerciseArray" [ngValue]="selectedExercise">{{selectedExercise.name}}</option>
-            </select>
-            <button type="button" class="btn btn-danger exercise-buttons" (click)="onDeleteExercise(i)">x</button>
+        <button type="button" class="btn small btn-primary workout-buttons" (click)="onAddExercise()">+</button>
+        <div class="row workout-select" *ngFor="let exercise of exercises.controls; let i = index">
+            <div class="col">
+                <select class="form-control" name="exerciseId" id="exerciseId" [formControlName]="i">
+                    <option value="" selected disabled hidden>--Select Exercise--</option>
+                    <option *ngFor="let selectedExercise of exerciseArray" [ngValue]="selectedExercise">{{selectedExercise.name}}</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-danger workout-button" (click)="onDeleteExercise(i)">x</button>
+            </div>
         </div>
     </div>
     <button form="createWorkoutForm" type="submit" class="btn btn-success">Submit</button>

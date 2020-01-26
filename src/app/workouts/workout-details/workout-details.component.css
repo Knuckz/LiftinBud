@@ -1,3 +1,68 @@
 .divider {
     margin-bottom: 10px;
 }
+
+.edit-button-group {
+    float: right;
+}
+
+.edit-button-group > .save-button {
+    margin-left: 15px;
+    padding: .375rem 1rem;
+}
+
+.exercise-select > option {
+    text-align: center;
+}
+
+.inputs {
+    margin-bottom: 0px;
+}
+
+.workoutInput {
+    margin-bottom: 0px;
+}
+
+.nameInput {
+    margin-bottom: 0px;
+}
+
+.details-description {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: rgba(0,0,0,.03);
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.details-description-row {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.details-body {
+    padding: 10px;
+}
+
+td, th {
+    padding:5px;
+}
+
+.details-header {
+    padding: 10px;
+}
+
+.details-footer {
+    padding: 10px;
+}
+
+.details-descriptors {
+    margin-bottom: 10px;
+}
+
+.deleted-row {
+    background-color: red;
+}

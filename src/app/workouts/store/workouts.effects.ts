@@ -45,4 +45,16 @@ export class workoutsEffects {
             ))
         )
     ))
+
+    $editWorkout = createEffect(() => 
+        this.actions$.pipe(
+            ofType(workoutsActions.editWorkout),
+            switchMap(({ workout }) => this.http.put<Workout>(`api/workouts/${workout.id}`, workout)
+                .pipe(
+                    map(() => workoutsActions.editWorkoutSuccess({ workout })),
+                    catchError((error) => of(workoutsActions.editWorkoutFailure({ error })))
+                )
+            )
+        )
+    )
 }
